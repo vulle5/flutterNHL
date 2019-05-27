@@ -129,7 +129,12 @@ class PrimaryPosition {
 
 class Stats {
   final CareerRegularSeason careerRegularSeason;
-  // Add StatsBySeason
+  // TODO: Add yearByYear
+  // final YearByYear yearByYear;
+
+  // class YearByYear {
+  //  final List<Season> seasons;
+  // }
 
   const Stats({this.careerRegularSeason});
 
