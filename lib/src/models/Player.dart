@@ -21,10 +21,7 @@ class Player {
   final String rosterStatus;
   final CurrentTeam currentTeam;
   final PrimaryPosition primaryPosition;
-
-  // Make stats its own class
-  // final Stats stats
-//  final List<Map<String, dynamic>> stats;
+  final Stats stats;
 
   const Player({
     this.id,
@@ -48,8 +45,8 @@ class Player {
     this.shootsCatches,
     this.rosterStatus,
     this.currentTeam,
-    this.primaryPosition
-//    this.stats,
+    this.primaryPosition,
+    this.stats
   });
 
   factory Player.fromJson(Map<String, dynamic> parsedJson) {
@@ -77,19 +74,20 @@ class Player {
       shootsCatches: parsedJson['shootsCatches'],
       rosterStatus: parsedJson['rosterStatus'],
       currentTeam: CurrentTeam.fromJson(parsedJson['currentTeam']),
-      primaryPosition: PrimaryPosition.fromJson(parsedJson['primaryPosition'])
+      primaryPosition: PrimaryPosition.fromJson(parsedJson['primaryPosition']),
+      stats: Stats.fromJson(parsedJson['stats'])
     );
   }
 }
 
 class CurrentTeam {
   final int id;
-  final String team;
+  final String name;
   final String link;
 
   const CurrentTeam({
     this.id,
-    this.team,
+    this.name,
     this.link
   });
 
@@ -98,7 +96,7 @@ class CurrentTeam {
 
     return CurrentTeam(
       id: parsedJson['id'],
-      team: parsedJson['team'],
+      name: parsedJson['name'],
       link: parsedJson['link']
     );
   }
@@ -125,6 +123,115 @@ class PrimaryPosition {
       name: parsedJson['name'],
       type: parsedJson['type'],
       abbreviation: parsedJson['abbreviation']
+    );
+  }
+}
+
+class Stats {
+  final CareerRegularSeason careerRegularSeason;
+  // Add StatsBySeason
+
+  const Stats({this.careerRegularSeason});
+
+  factory Stats.fromJson(Map<String, dynamic> parsedJson){
+    if (parsedJson == null) return null;
+
+    return Stats(
+        careerRegularSeason: CareerRegularSeason.fromJson(parsedJson)
+    );
+  }
+}
+
+class CareerRegularSeason {
+  final String timeOnIce;
+  final int assists;
+  final int goals;
+  final int pim;
+  final int shots;
+  final int games;
+  final int hits;
+  final int powerPlayGoals;
+  final int powerPlayPoints;
+  final String powerPlayTimeOnIce;
+  final String evenTimeOnIce;
+  final String penaltyMinutes;
+  final double faceOffPct;
+  final double shotPct;
+  final int gameWinningGoals;
+  final int overTimeGoals;
+  final int shortHandedGoals;
+  final int shortHandedPoints;
+  final String shortHandedTimeOnIce;
+  final int blocked;
+  final int plusMinus;
+  final int points;
+  final int shifts;
+  final String timeOnIcePerGame;
+  final String evenTimeOnIcePerGame;
+  final String shortHandedTimeOnIcePerGame;
+  final String powerPlayTimeOnIcePerGame;
+
+  const CareerRegularSeason({
+    this.timeOnIce,
+    this.assists,
+    this.goals,
+    this.pim,
+    this.shots,
+    this.games,
+    this.hits,
+    this.powerPlayGoals,
+    this.powerPlayPoints,
+    this.powerPlayTimeOnIce,
+    this.evenTimeOnIce,
+    this.penaltyMinutes,
+    this.faceOffPct,
+    this.shotPct,
+    this.gameWinningGoals,
+    this.overTimeGoals,
+    this.shortHandedGoals,
+    this.shortHandedPoints,
+    this.shortHandedTimeOnIce,
+    this.blocked,
+    this.plusMinus,
+    this.points,
+    this.shifts,
+    this.timeOnIcePerGame,
+    this.evenTimeOnIcePerGame,
+    this.shortHandedTimeOnIcePerGame,
+    this.powerPlayTimeOnIcePerGame
+  });
+
+  factory CareerRegularSeason.fromJson(Map<String, dynamic> parsedJson){
+    if (parsedJson == null) return null;
+
+    return CareerRegularSeason(
+        timeOnIce: parsedJson['timeOnIce'],
+        assists: parsedJson['assists'],
+        goals: parsedJson['goals'],
+        pim: parsedJson['pim'],
+        shots: parsedJson['shots'],
+        games: parsedJson['games'],
+        hits: parsedJson['hits'],
+        powerPlayGoals: parsedJson['powerPlayGoals'],
+        powerPlayPoints: parsedJson['powerPlayPoints'],
+        powerPlayTimeOnIce: parsedJson['powerPlayTimeOnIce'],
+        evenTimeOnIce: parsedJson['evenTimeOnIce'],
+        penaltyMinutes: parsedJson['penaltyMinutes'],
+        faceOffPct: parsedJson['faceOffPct'],
+        shotPct: parsedJson['shotPct'],
+        gameWinningGoals: parsedJson['gameWinningGoals'],
+        overTimeGoals: parsedJson['overTimeGoals'],
+        shortHandedGoals: parsedJson['shortHandedGoals'],
+        shortHandedPoints: parsedJson['shortHandedPoints'],
+        shortHandedTimeOnIce: parsedJson['shortHandedTimeOnIce'],
+        blocked: parsedJson['blocked'],
+        plusMinus: parsedJson['plusMinus'],
+        points: parsedJson['points'],
+        shifts: parsedJson['shifts'],
+        timeOnIcePerGame: parsedJson['timeOnIcePerGame'],
+        evenTimeOnIcePerGame: parsedJson['evenTimeOnIcePerGame'],
+        shortHandedTimeOnIcePerGame: parsedJson['shortHandedTimeOnIcePerGame'],
+        powerPlayTimeOnIcePerGame: parsedJson['powerPlayTimeOnIcePerGame']
     );
   }
 }
