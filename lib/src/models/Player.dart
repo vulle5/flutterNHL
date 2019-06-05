@@ -21,7 +21,8 @@ class Player {
   final String rosterStatus;
   final CurrentTeam currentTeam;
   final PrimaryPosition primaryPosition;
-  final Stats stats;
+  final CareerRegularSeason careerRegularSeason;
+  final YearByYear yearByYear;
 
   const Player({
     this.id,
@@ -46,7 +47,8 @@ class Player {
     this.rosterStatus,
     this.currentTeam,
     this.primaryPosition,
-    this.stats
+    this.careerRegularSeason,
+    this.yearByYear
   });
 
   factory Player.fromJson(Map<String, dynamic> parsedJson) {
@@ -75,7 +77,8 @@ class Player {
       rosterStatus: parsedJson['rosterStatus'],
       currentTeam: CurrentTeam.fromJson(parsedJson['currentTeam']),
       primaryPosition: PrimaryPosition.fromJson(parsedJson['primaryPosition']),
-      stats: Stats.fromJson(parsedJson['stats'])
+      careerRegularSeason: CareerRegularSeason.fromJson(parsedJson['careerRegularSeason']),
+      yearByYear: YearByYear.fromJson(parsedJson['yearByYear'])
     );
   }
 }
@@ -95,7 +98,7 @@ class CurrentTeam {
     if (parsedJson == null) return null;
 
     return CurrentTeam(
-      id: parsedJson['id'],
+      id: parsedJson['id'] ?? null,
       name: parsedJson['name'],
       link: parsedJson['link']
     );
@@ -123,26 +126,6 @@ class PrimaryPosition {
       name: parsedJson['name'],
       type: parsedJson['type'],
       abbreviation: parsedJson['abbreviation']
-    );
-  }
-}
-
-class Stats {
-  final CareerRegularSeason careerRegularSeason;
-  // TODO: Add yearByYear
-  // final YearByYear yearByYear;
-
-  // class YearByYear {
-  //  final List<Season> seasons;
-  // }
-
-  const Stats({this.careerRegularSeason});
-
-  factory Stats.fromJson(Map<String, dynamic> parsedJson){
-    if (parsedJson == null) return null;
-
-    return Stats(
-        careerRegularSeason: CareerRegularSeason.fromJson(parsedJson)
     );
   }
 }
@@ -237,6 +220,144 @@ class CareerRegularSeason {
         evenTimeOnIcePerGame: parsedJson['evenTimeOnIcePerGame'],
         shortHandedTimeOnIcePerGame: parsedJson['shortHandedTimeOnIcePerGame'],
         powerPlayTimeOnIcePerGame: parsedJson['powerPlayTimeOnIcePerGame']
+    );
+  }
+}
+
+class YearByYear {
+  final List<Season> seasons;
+
+  const YearByYear({this.seasons});
+
+  factory YearByYear.fromJson(Map<String, dynamic> parsedJson){
+    if (parsedJson == null) return null;
+
+    var list = parsedJson['splits'] as List;
+    List<Season> seasonList = list.map((item) => Season.fromJson(item)).toList();
+
+    return YearByYear(
+        seasons: seasonList
+    );
+  }
+}
+
+class Season {
+  final String season;
+  final SeasonStats seasonStats;
+  final CurrentTeam team;
+  final League league;
+
+  const Season({this.season, this.seasonStats, this.team, this.league});
+
+  factory Season.fromJson(Map<String, dynamic> parsedJson){
+    if (parsedJson == null) return null;
+
+    return Season(
+      season: parsedJson['season'],
+      seasonStats: SeasonStats.fromJson(parsedJson['stat']),
+      team: CurrentTeam.fromJson(parsedJson['team']),
+      league: League.fromJson(parsedJson['league'])
+    );
+  }
+}
+
+class SeasonStats {
+  final String timeOnIce;
+  final int assists;
+  final int goals;
+  final int pim;
+  final int shots;
+  final int games;
+  final int hits;
+  final int powerPlayGoals;
+  final int powerPlayPoints;
+  final String powerPlayTimeOnIce;
+  final String evenTimeOnIce;
+  final String penaltyMinutes;
+  final double faceOffPct;
+  final double shotPct;
+  final int gameWinningGoals;
+  final int overTimeGoals;
+  final int shortHandedGoals;
+  final int shortHandedPoints;
+  final String shortHandedTimeOnIce;
+  final int blocked;
+  final int plusMinus;
+  final int points;
+  final int shifts;
+
+  const SeasonStats({
+    this.timeOnIce,
+    this.assists,
+    this.goals,
+    this.pim,
+    this.shots,
+    this.games,
+    this.hits,
+    this.powerPlayGoals,
+    this.powerPlayPoints,
+    this.powerPlayTimeOnIce,
+    this.evenTimeOnIce,
+    this.penaltyMinutes,
+    this.faceOffPct,
+    this.shotPct,
+    this.gameWinningGoals,
+    this.overTimeGoals,
+    this.shortHandedGoals,
+    this.shortHandedPoints,
+    this.shortHandedTimeOnIce,
+    this.blocked,
+    this.plusMinus,
+    this.points,
+    this.shifts
+  });
+
+  factory SeasonStats.fromJson(Map<String, dynamic> parsedJson){
+    if (parsedJson == null) return null;
+
+    return SeasonStats(
+        timeOnIce: parsedJson['timeOnIce'] ?? "",
+        assists: parsedJson['assists'] ?? 0,
+        goals: parsedJson['goals'] ?? 0,
+        pim: parsedJson['pim'] ?? 0,
+        shots: parsedJson['shots'] ?? 0,
+        games: parsedJson['games'] ?? 0,
+        hits: parsedJson['hits'] ?? 0,
+        powerPlayGoals: parsedJson['powerPlayGoals'] ?? 0,
+        powerPlayPoints: parsedJson['powerPlayPoints'] ?? 0,
+        powerPlayTimeOnIce: parsedJson['powerPlayTimeOnIce'] ?? "",
+        evenTimeOnIce: parsedJson['evenTimeOnIce'] ?? "",
+        penaltyMinutes: parsedJson['penaltyMinutes'] ?? "",
+        faceOffPct: parsedJson['faceOffPct'] ?? 0.0,
+        shotPct: parsedJson['shotPct'] ?? 0.0,
+        gameWinningGoals: parsedJson['gameWinningGoals'] ?? 0,
+        overTimeGoals: parsedJson['overTimeGoals'] ?? 0,
+        shortHandedGoals: parsedJson['shortHandedGoals'] ?? 0,
+        shortHandedPoints: parsedJson['shortHandedPoints'] ?? 0,
+        shortHandedTimeOnIce: parsedJson['shortHandedTimeOnIce'] ?? "",
+        blocked: parsedJson['blocked'] ?? 0,
+        plusMinus: parsedJson['plusMinus'] ?? 0,
+        points: parsedJson['points'] ?? 0,
+        shifts: parsedJson['shifts'] ?? 0
+    );
+  }
+}
+
+class League {
+  final String name;
+  final String link;
+
+  const League({
+    this.name,
+    this.link
+  });
+
+  factory League.fromJson(Map<String, dynamic> parsedJson){
+    if (parsedJson == null) return null;
+
+    return League(
+        name: parsedJson['name'],
+        link: parsedJson['link']
     );
   }
 }

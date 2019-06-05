@@ -33,6 +33,69 @@ var jsonData = '''{
       "abbreviation" : "RW"
     },
     "stats" : [ {
+    "type" : {
+      "displayName" : "yearByYear"
+    },
+    "splits" : [ {
+      "season" : "20012002",
+      "stat" : {
+        "timeOnIce" : "00:00",
+        "assists" : 8,
+        "goals" : 18,
+        "pim" : 20,
+        "games" : 19,
+        "powerPlayTimeOnIce" : "00:00",
+        "evenTimeOnIce" : "00:00",
+        "penaltyMinutes" : "20",
+        "faceOffPct" : 0.0,
+        "shortHandedTimeOnIce" : "00:00",
+        "points" : 26,
+        "shifts" : 0
+      },
+      "team" : {
+        "name" : "Dyn'o Moscow 2",
+        "link" : "/api/v1/teams/null"
+      },
+      "league" : {
+        "name" : "Russia-3",
+        "link" : "/api/v1/league/null"
+      },
+      "sequenceNumber" : 1
+      },
+      {
+        "season": "20052006",
+        "stat": {
+        "timeOnIce": "1751:22",
+        "assists": 54,
+        "goals": 52,
+        "pim": 52,
+        "shots": 425,
+        "games": 81,
+        "hits": 172,
+        "powerPlayGoals": 21,
+        "powerPlayPoints": 52,
+        "powerPlayTimeOnIce": "544:33",
+        "evenTimeOnIce": "1140:57",
+        "penaltyMinutes": "52",
+        "faceOffPct": 12.5,
+        "shotPct": 12.2,
+        "gameWinningGoals": 5,
+        "overTimeGoals": 2,
+        "shortHandedGoals": 3,
+        "shortHandedPoints": 3,
+        "shortHandedTimeOnIce": "65:52",
+        "blocked": 20,
+        "plusMinus": 2,
+        "points": 106,
+        "shifts": 1959
+        },
+        "team": {},
+        "league": {},
+        "sequenceNumber": 1
+        }
+      ]
+      },
+      {
       "type" : {
         "displayName" : "careerRegularSeason"
       },

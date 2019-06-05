@@ -6,6 +6,6 @@ class PlayerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(player.stats.careerRegularSeason.timeOnIce, style: TextStyle(fontSize: 24)));
+    return Center(child: Text(player.nationality, style: TextStyle(fontSize: 24)));
   }
 }
