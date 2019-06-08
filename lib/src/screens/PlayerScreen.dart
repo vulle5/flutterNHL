@@ -6,6 +6,11 @@ class PlayerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(player.fullName, style: TextStyle(fontSize: 24)));
+    return Center(
+      child: Text(
+        player.fullName,
+        style: TextStyle(fontSize: 24),
+      ),
+    );
   }
 }
