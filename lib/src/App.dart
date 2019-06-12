@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import './screens//PlayerScreen.dart';
+
+import 'package:nhl_compare/src/screens/PlayerScreen.dart';
+import 'package:nhl_compare/src/services/playerService.dart';
 
 class App extends StatelessWidget {
   @override
@@ -9,7 +11,7 @@ class App extends StatelessWidget {
         appBar: AppBar(
           title: Text('NHL Compare'),
         ),
-        body: PlayerScreen(),
+        body: PlayerScreen(player: fetchPlayer()),
       ),
     );
   }
