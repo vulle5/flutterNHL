@@ -9,6 +9,6 @@ class PlayerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("hello");
+    return Text("PlayerScreen");
   }
 }
