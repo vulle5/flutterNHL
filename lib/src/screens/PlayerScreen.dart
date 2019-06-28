@@ -9,6 +9,22 @@ class PlayerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("PlayerScreen");
+    return Center(
+      child: FutureBuilder<Player>(
+        future: player,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Text(
+              snapshot.data.fullName,
+              style: TextStyle(fontSize: 24),
+            );
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          // Default
+          return CircularProgressIndicator();
+        },
+      ),
+    );
   }
 }
