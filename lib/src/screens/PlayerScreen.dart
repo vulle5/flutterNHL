@@ -10,7 +10,7 @@ class PlayerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: FutureBuilder<Player>(
+      child: FutureBuilder(
         future: player,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
