@@ -14,7 +14,6 @@ Map<String, dynamic> _parsePlayer(parsedJson) {
 }
 
 Future<Player> fetchPlayer() async {
-  // Make Network call here
   final response =
       await http.get("""https://statsapi.web.nhl.com/api/v1/people/8474141
       ?expand=person.stats&stats=yearByYear,careerRegularSeason&expand=stats.team""");
