@@ -58,7 +58,7 @@ class CareerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: 70,
       child: Row(
         children: <Widget>[
           Expanded(
@@ -110,6 +110,7 @@ class CareerTile extends StatelessWidget {
                     alignment: Alignment.topCenter,
                     child: Text(
                       "Team",
+                      softWrap: true,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
@@ -117,27 +118,7 @@ class CareerTile extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text("VAN")
-              ],
-            ),
-          ),
-          Expanded(
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Text(
-                      "Points",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                ),
-                Text("96")
+                Text("Carolina Hurriganes")
               ],
             ),
           ),
