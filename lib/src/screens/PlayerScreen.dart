@@ -48,6 +48,7 @@ class CareerTab extends StatelessWidget {
     return Column(
       children: <Widget>[
         CareerTile(),
+        Divider(),
       ],
     );
   }
@@ -61,16 +62,84 @@ class CareerTile extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Expanded(
-            child: Placeholder(),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Text(
+                      "Season",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+                Text("2018-2019")
+              ],
+            ),
           ),
           Expanded(
-            child: Placeholder(),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Text(
+                      "League",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+                Text("NHL")
+              ],
+            ),
           ),
           Expanded(
-            child: Placeholder(),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Text(
+                      "Team",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+                Text("VAN")
+              ],
+            ),
           ),
           Expanded(
-            child: Placeholder(),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Text(
+                      "Points",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+                Text("96")
+              ],
+            ),
           ),
         ],
       ),
