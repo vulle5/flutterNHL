@@ -24,13 +24,16 @@ class PlayerScreen extends StatelessWidget {
     );
   }
 
-  TabBarView buildMainView() {
-    return TabBarView(
-      children: <Widget>[
-        CareerTab(),
-        Center(child: Text('Logs')),
-        Center(child: Text('Advanced')),
-      ],
+  Container buildMainView() {
+    return Container(
+      height: 1000,
+      child: TabBarView(
+        children: <Widget>[
+          CareerTab(),
+          Center(child: Text('Logs')),
+          Center(child: Text('Advanced')),
+        ],
+      ),
     );
   }
 }
@@ -42,32 +45,33 @@ class CareerTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        CareerTile(),
+      ],
+    );
+  }
+}
+
+class CareerTile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      child: Column(
+      height: 60,
+      child: Row(
         children: <Widget>[
-          Flexible(
-            flex: 2,
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Placeholder(),
-                ),
-                Expanded(
-                  child: Placeholder(),
-                ),
-                Expanded(
-                  child: Placeholder(),
-                ),
-                Expanded(
-                  child: Placeholder(),
-                ),
-              ],
-            ),
-          ),
-          Flexible(
-            flex: 10,
+          Expanded(
             child: Placeholder(),
-          )
+          ),
+          Expanded(
+            child: Placeholder(),
+          ),
+          Expanded(
+            child: Placeholder(),
+          ),
+          Expanded(
+            child: Placeholder(),
+          ),
         ],
       ),
     );

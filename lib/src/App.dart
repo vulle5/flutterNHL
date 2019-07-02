@@ -29,15 +29,22 @@ class _AppState extends State<App> {
       home: DefaultTabController(
         length: _tabItems.length,
         child: Scaffold(
-          appBar: AppBar(
-            title: Text('NHL Compare'),
-            bottom: _selectedItem == 1
-                ? TabBar(
-                    tabs: _tabItems,
-                  )
-                : null,
+          body: CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBar(
+                title: Text('NHL Compare'),
+                bottom: _selectedItem == 1
+                    ? TabBar(
+                        tabs: _tabItems,
+                      )
+                    : null,
+              ),
+              SliverList(
+                delegate:
+                    SliverChildListDelegate([_navigationItems[_selectedItem]]),
+              )
+            ],
           ),
-          body: _navigationItems[_selectedItem],
           bottomNavigationBar: BottomNavigationBar(
             onTap: (int index) => setState(() => _selectedItem = index),
             currentIndex: _selectedItem,
